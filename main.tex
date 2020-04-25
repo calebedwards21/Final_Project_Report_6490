@@ -10,7 +10,7 @@
 \usepackage[utf8]{inputenc}
 
 \title{Centralized Identity Authority Through Blockchain}
-\author{William Shupe, Evan Hirn, Caleb Edwards}
+\author{William Shupe, Evan Hirn, Caleb Edwards \\ University of Utah \\ School of Computing}
 \date{April 2020}
 
 \begin{document}
@@ -25,12 +25,20 @@ other things like credit without having to worry about losing permanent identifi
 
 It takes a lot of work to reconcile the problem of losing one of these permanent identifiers. When a person in the United States loses one of these identifiers that represent their identity, it could take weeks for that central authority to fix the problem and provide new identification. This is a problem that needs fixed, and blockchain is the answer.
 
-The implementation that was chosen, was being able to add new user data to the chain, edit user data, and share user data. This implementation was chosen because it can show without too much complexity that identity resolution through blockchain is a viable way of proving a user's identity. 
+The implementation that was chosen, was being able to add new user data to the chain, edit user data, share user data, and edit private keys. This implementation was chosen because it can show without too much complexity that identity resolution through blockchain is a viable way of proving a user's identity. If a person has a name change, this will need to take place in the blockchain. This method will allow that to happen. If someone needs to share their information with a service provider, like a future employer who needs a social security number, this will be a secure way to prove their identity without the risk of just giving out any secure information. If a private key ever gets lost or is deemed insecure, it would be important to be able to change that signing key. This service would allow that to happen. 
+
+This project implementation was written in Python. There is a set of transactions that take place in testing where a user adds data, edits data, and shares data. It is important to note that when data sharing takes place, it does not have to be all of the user's data that is in the transaction. It only has to be a verifiable subset of that data. This is the data that is shared. So if a user does not want to share all data that is available on a transaction, they can choose not to do so. They can instead choose to share only a subset of that original data. 
+
+The rest of the project will cover related work, an adversary model, our methodology, the implementation and experimentation, and then a conclusion to finish. The related work will be other projects and papers that have implemented an identity authority with blockchain and how it relates to our project. The adversary model will cover how this implementation would deal with different theoretical adversaries. The methodology will explain the theoretical thinking behind this problem and why this implementation was chosen. The implementation will then be described in more detail, as well as how testing occurred. Lastly, a conclusion will take place that discusses an overview of the project along with future implementations.
 
 \section{Related Work}
 % Related work –Summarize the existing work related to your problem.
 
-There are many different identity solutions that have been created through blockchain \cite{1}.
+There are many different identity solutions that have been created through blockchain. What is not surprising is that there are many laws that nations follow with identity management. To make identity management feasible and producible, there are certain laws that need to be followed. One of the laws is to have user control and consent \cite{1}. This means that the user has to consent on which portion of their data can be shared publicly. This system follows this law, with only allowing the info that the user specifies to be shared with the provider asking for this information. There are different laws, like portability across different platforms that would be implemented in future scenarios for this project \cite{1}.
+
+UPort is a decentralized blockchain that is more focused on email and banking \cite{1}. Each node has a Ethereum virtual machine installed and has to create a controller and proxy to be added as an acceptable node in the chain. The private key of this service is stored on the user's device where they have the VM installed. The way that uPort does key recovery, is that the node has picked trustees who approve new key requests when sent by the node that lost the key \cite{1}. This differs from this project implementation in that when a key needs to be changed, the user sends the private data encrypted with the new key. If the new data matches the old data, then the private key is updated.
+
+There has been a patent submitted for payroll based blockchain identity \cite{2}.
 
 \section{Adversary Model}
 % Adversary model –Describe the adversary you are securing against.
